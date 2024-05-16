@@ -7,14 +7,16 @@ The sqlite DB gets created in whatever directory you run the command, it will be
 The DB has one table, called "issues".
 
 ## Instructions:
-In order to run this script, you will need to install go:
-```
-https://go.dev/doc/install
-```
+In order to run this script, you will need to install go: https://go.dev/doc/install
+
+And you will need a Linear API key: https://developers.linear.app/docs/graphql/working-with-the-graphql-api
 
 To run the script:
 ```
-    go run https://github.com/FirstResonance/linear-data-wrangling <YOUR LINEAR API KEY HERE> 
+    go install github.com/fr-orionfollett/lineardb 
+    export PATH=$PATH:$(go env GOPATH)/bin 
+
+    lineardb <YOUR LINEAR API KEY HERE>
 ```
 
 Or you could clone the repo and run: 
