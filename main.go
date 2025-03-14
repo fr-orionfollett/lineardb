@@ -105,6 +105,9 @@ func collectAllIssuesFromLinear() {
 			creator {
 			  displayName
 			}
+			assignee {
+				displayName
+			}
 			description
 			url
 			cycle{
