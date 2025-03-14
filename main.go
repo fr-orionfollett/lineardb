@@ -118,18 +118,17 @@ func collectAllIssuesFromLinear() {
 		}
 	  }`
 
-	if len(os.Args) != 2 {
-		log.Fatal("Make sure to include a Linear API key as the first argument!")
+	LINEAR_API_KEY := os.Getenv("LIN_API_KEY")
+	if len(LINEAR_API_KEY) < 2 {
+		log.Fatal("Make sure to include a Linear API key in the Env Var LIN_API_KEY!")
 	}
-
-	LINEAR_API_KEY := os.Args[1]
 
 	// remove existing db if there is one
 	os.Remove("./issues.db")
-	db, err := sql.Open("sqlite3", "./issues.db")
+	db, _ := sql.Open("sqlite3", "./issues.db")
 	defer db.Close()
 
-	_, err = db.Exec(`create table issues (
+	_, err := db.Exec(`create table issues (
 		id text primary key,
 		title text,
 		createdAt text,
